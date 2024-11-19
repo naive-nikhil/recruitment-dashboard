@@ -8,15 +8,15 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 
-const PORT = process.env.PORT || 8080;
-const DB_URL = process.env.DB_URL;
+const PORT = process.env.PORT || 3000;
+const DB_URI = process.env.DB_URI;
 
 main()
   .then(() => console.log("DB Connection Successful!"))
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(DB_URL);
+  await mongoose.connect(DB_URI);
 }
 
 app.set("view engine", "ejs");
