@@ -19,24 +19,41 @@
           <th>Email</th>
           <th>Mobile Number</th>
           <th>For Requisition</th>
+          <th>View Resume</th>
           <th>Submitted On</th>
           <th>App Status</th>
           <th>App Step</th>
         </thead>
-        <%for(let i=0; i<=50; i++){%>
-          <tr>
-            <td>1</td>
-            <td>John Doe</td>
-            <td>sample@example.com</td>
-            <td>1234567890</td>
-            <td>Car Advisor</td>
-            <td>Nov 18, 2024</td>
-            <td>
-              <button>Active</button>
-            </td>
-            <td>Applied</td>
-          </tr>
-        <%}%>
-      </table>
+        <tbody>
+          <% if (candidates.length === 0) { %>
+            <tr class="no-data">
+              <td colspan="8">No applications available.</td>
+            </tr>
+          <% } else { %>
+            <% let index = 1; %>
+              <% for (let candidate of candidates) { %>
+                <tr>
+                  <td><%= index++ %></td>
+                  <td><%= candidate.firstName %>
+                    <%= candidate.lastName %></td>
+                  <td><%= candidate.email %></td>
+                  <td><%= candidate.phone %></td>
+                  <td><%= candidate.jobId.role %></td>
+                  <td>
+                    <a href="<%=candidate.resume.fileUrl%>" target="_blank">
+                      <i class="fa-solid fa-eye"></i>
+                    </a>
+                  </td>
+                  <td><%= candidate.submittedOn.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></td>
+                  <td>Active</td>
+                  <td>Applied</td>
+                </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <div id="formModal" class="modal">
+        <div class="modal-content"></div>
+      </div>
     </div>
-  </div>

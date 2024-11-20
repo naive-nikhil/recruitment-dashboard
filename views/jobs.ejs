@@ -48,7 +48,7 @@
                   </td>
                   <td>
                     <i class="fa-solid fa-eye" onclick="openForm(`viewJobDescription<%=index%>`)"></i>
-                    <i class="fa-solid fa-plus" onclick="openForm('jobApplyForm')"></i>
+                    <i class="fa-solid fa-plus" onclick="openForm('jobApplyForm<%=index%>')"></i>
                     <form action="/jobs/<%= job._id %>?_method=DELETE" method="POST" style="display: inline;">
                       <button type="submit" onclick="return confirm('Are you sure you want to delete this job?')" style="all: unset;">
                         <i class="fa-solid fa-trash"></i>
@@ -62,97 +62,160 @@
                     <h2>Job Description<i class="fa-solid fa-xmark" id="closeFormButton"></i>
                     </h2>
                     <textarea name="jobDescription" rows="20" disabled="disabled"><%= job.jobDescription %></textarea>
-                    <button onclick="openForm('jobApplyForm')">Apply for the role</button>
+                    <button onclick="openForm('jobApplyForm<%=index%>')">Apply for the role</button>
                   </form>
                 </template>
 
-                <template id="jobApplyForm">
-                  <form method="post" action="/applications/<%=job._id%>">
-                    <h2>Apply for the role<i class="fa-solid fa-xmark" id="closeFormButton"></i>
-                    </h2>
-
+                <template id="jobApplyForm<%=index%>">
+                  <form method="post" action="/applications/<%=job._id%>" enctype="multipart/form-data">
                     <h2><%=job.role%>
                       <i class="fa-solid fa-xmark" id="closeFormButton"></i>
                     </h2>
+                    <h4><%=job.experienceRequired%>
+                      Yrs |
+                      <%=job.location%></h4>
 
                     <div class="row full-width">
-                      <label for="job[role]">Attach CV
+                      <label for="candidate[resume]">Attach CV
                         <span class="required">
                           *</span>
                         (doc/docx/pdf/rtf only)</label>
-                      <input type="file" name="job[role]" required="required">
+                      <input type="file" name="candidate[resume]" accept=".pdf,.doc,.docx,.rtf">
                     </div>
 
                     <div class="row">
                       <div>
-                        <label for="job[experienceRequired]">First Name
+                        <label for="candidate[firstName]">First Name
                           <span class="required">*</span></label>
-                        <input type="text" name="job[experienceRequired]" required="required">
+                        <input type="text" name="candidate[firstName]" required="required">
                       </div>
 
                       <div>
-                        <label for="job[location]">Last Name
+                        <label for="candidate[lastName]">Last Name
                           <span class="required">*</span></label>
-                        <input type="text" name="job[location]" required="required">
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div>
-                        <label for="job[budget]">Email
-                          <span class="required">*</span></label>
-                        <input type="text" name="job[budget]" required="required">
-                      </div>
-                      <div>
-                        <label for="job[budget]">Gender
-                          <span class="required">*</span></label>
-                        <input type="text" name="job[budget]" required="required">
+                        <input type="text" name="candidate[lastName]" required="required">
                       </div>
                     </div>
 
                     <div class="row">
                       <div>
-                        <label for="job[budget]">Phone Number
+                        <label for="candidate[email]">Email
                           <span class="required">*</span></label>
-                        <input type="text" name="job[budget]" required="required">
+                        <input type="email" name="candidate[email]" required="required">
                       </div>
                       <div>
-                        <label for="job[budget]">Location
+                        <label for="candidate[gender]">Gender
                           <span class="required">*</span></label>
-                        <input type="text" name="job[budget]" required="required">
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div>
-                        <label for="job[budget]">Preferred Location
-                          <span class="required">*</span></label>
-                        <input type="text" name="job[budget]" required="required">
-                      </div>
-                      <div>
-                        <label for="job[budget]">Date of Birth (18Yrs Min)
-                          <span class="required">*</span></label>
-                        <input type="text" name="job[budget]" required="required">
+                        <input type="text" name="candidate[gender]" required="required">
                       </div>
                     </div>
 
                     <div class="row">
                       <div>
-                        <label for="job[budget]">Aadhaar Number
+                        <label for="candidate[phone]">Phone Number
                           <span class="required">*</span></label>
-                        <input type="text" name="job[budget]" required="required">
+                        <input type="text" name="candidate[phone]" required="required">
                       </div>
                       <div>
-                        <label for="job[budget]">PAN Number
+                        <label for="candidate[currentLocation]">Current Location
                           <span class="required">*</span></label>
-                        <input type="text" name="job[budget]" required="required">
+                        <input type="text" name="candidate[currentLocation]" required="required">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div>
+                        <label for="candidate[preferredLocation]">Preferred Location
+                          <span class="required">*</span></label>
+                        <input type="text" name="candidate[preferredLocation]" required="required">
+                      </div>
+                      <div>
+                        <label for="candidate[dob]">Date of Birth (18Yrs Min)
+                          <span class="required">*</span></label>
+                        <input type="date" name="candidate[dob]" required="required">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div>
+                        <label for="candidate[aadhaarNumber]">Aadhaar Number
+                          <span class="required">*</span></label>
+                        <input type="number" name="candidate[aadhaarNumber]" required="required">
+                      </div>
+                      <div>
+                        <label for="candidate[panNumber]">PAN Number
+                          <span class="required">*</span></label>
+                        <input type="text" name="candidate[panNumber]" required="required">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div>
+                        <label for="candidate[totalExperience]">Total Experience (yrs)
+                          <span class="required">*</span></label>
+                        <input type="number" name="candidate[totalExperience]" required="required">
+                      </div>
+                      <div>
+                        <label for="candidate[relevantExperience]">Relevant Experience (yrs)
+                          <span class="required">*</span></label>
+                        <input type="number" name="candidate[relevantExperience]" required="required">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div>
+                        <label for="candidate[currentCompany]">Current Company
+                          <span class="required">*</span></label>
+                        <input type="text" name="candidate[currentCompany]" required="required">
+                      </div>
+                      <div>
+                        <label for="candidate[noticePeriod]">Notice Period (days)
+                          <span class="required">*</span></label>
+                        <input type="number" name="candidate[noticePeriod]" required="required">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div>
+                        <label for="candidate[leavingReason]">Reason for Leaving
+                          <span class="required">*</span></label>
+                        <input type="text" name="candidate[leavingReason]" required="required">
+                      </div>
+                      <div>
+                        <label for="candidate[noticePeriodComments]">Notice Period Comments
+                          <span class="required">*</span></label>
+                        <input type="text" name="candidate[noticePeriodComments]" required="required">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div>
+                        <label for="candidate[currentSalary]">Current Salary
+                          <span class="required">*</span></label>
+                        <input type="number" name="candidate[currentSalary]" required="required">
+                      </div>
+                      <div>
+                        <label for="candidate[expectedSalary]">Expected Salary
+                          <span class="required">*</span></label>
+                        <input type="number" name="candidate[expectedSalary]" required="required">
                       </div>
                     </div>
 
                     <div class="row full-width">
-                      <label for="job[jobDescription]">Job Description
+                      <label for="candidate[salaryStructure]">Salary Structure Details
                         <span class="required">*</span></label>
-                      <textarea name="job[jobDescription]" required="required" rows="10"></textarea>
+                      <input type="text" name="candidate[salaryStructure]" required="required">
+                    </div>
+
+                    <div class="consent">
+                      <h5>Consent</h5>
+                      <p>
+                        <i>We process this data for recruitment purposes (e.g. screening, evaluations, employment letter generations, background verifications) only.<br>We also store this data in our applicant tracking system and are fully compliant with the local laws.<br>If you have any questions or concerns, please do not hesitate to contact the recruiter or our reception.</i>
+                      </p>
+                      <div class="agree">
+                        <input type="checkbox" name="agree">
+                        <label for="agree">I agree</label>
+                      </div>
                     </div>
 
                     <button type="submit">Submit</button>
