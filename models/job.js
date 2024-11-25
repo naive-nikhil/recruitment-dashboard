@@ -8,7 +8,7 @@ const jobSchema = new Schema({
   experienceRequired: { type: String, required: true },
   location: { type: String, required: true },
   positions: { type: Number, required: true, default: 1 },
-  budget: { type: String, required: true },
+  budget: { type: Number, required: true },
   submittedOn: { type: Date, default: Date.now },
   jobDescription: { type: String, required: true },
   profiles: [{ type: mongoose.Schema.ObjectId, ref: "Candidate", default: {} }],

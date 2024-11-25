@@ -10,6 +10,13 @@ const methodOverride = require("method-override");
 const multer = require("multer");
 const { storage } = require("./cloudConfig.js");
 const upload = multer({ storage });
+const wrapAsync = require("./utils/wrapAsync.js");
+const CustomError = require("./utils/CustomError.js");
+const passport = require("passport");
+const localStrategy = require("passport-local");
+const User = require("./models/user.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 const PORT = process.env.PORT || 3000;
 const DB_URI = process.env.DB_URI;
@@ -30,19 +37,43 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.engine("ejs", ejsMate);
 
+app.use(
+  session({
+    secret: "yourSecretKey",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    },
+  })
+);
+
+app.use(flash());
+
 app.get("/", (req, res) => {
   res.redirect("/jobs");
 });
 
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  next();
+});
+
 app.get("/jobs", async (req, res) => {
-  const jobs = await Job.find({});
+  const jobs = await Job.find({}).populate("profiles");
   res.render("jobs", { jobs });
 });
 
-app.post("/jobs", async (req, res) => {
-  await new Job(req.body.job).save();
-  res.redirect("/jobs");
-});
+// Job Posting
+app.post(
+  "/jobs",
+  wrapAsync(async (req, res) => {
+    await new Job(req.body.job).save();
+    req.flash("success", "Job posted successfully!");
+    res.redirect("/jobs");
+  })
+);
 
 app.delete("/jobs/:id", async (req, res) => {
   let { id } = req.params;
@@ -50,15 +81,18 @@ app.delete("/jobs/:id", async (req, res) => {
   res.redirect("/jobs");
 });
 
-app.get("/applications", async (req, res) => {
-  const candidates = await Candidate.find({}).populate("jobId");
-  res.render("applications", { candidates });
-});
+app.get(
+  "/applications",
+  wrapAsync(async (req, res) => {
+    const candidates = await Candidate.find({}).populate("jobId");
+    res.render("applications", { candidates });
+  })
+);
 
 app.post(
   "/applications/:jobId",
   upload.single("candidate[resume]"),
-  async (req, res) => {
+  wrapAsync(async (req, res) => {
     const { jobId } = req.params;
     const resumeUrl = req.file.path;
     console.log(req.body);
@@ -71,8 +105,19 @@ app.post(
     });
     await newCandidate.save();
     res.redirect("/jobs");
-  }
+  })
 );
+
+app.use((err, req, res, next) => {
+  console.log(err.stack);
+  let { status = 500, message = "Oops! Some error occurred!" } = err;
+  console.log("I reached Here");
+  res.status(status).render("error", { status, message });
+});
+
+app.use((req, res) => {
+  res.status(404).render("pagenotfound.ejs");
+});
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`App is listening to PORT:${PORT}`);

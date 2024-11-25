@@ -19,13 +19,11 @@ function openForm(templateId) {
     formModal.classList.add("show");
   }, 10);
 
-
   const dynamicCloseButton = formContent.querySelector("#closeFormButton");
   if (dynamicCloseButton) {
     dynamicCloseButton.addEventListener("click", closeForm);
   }
 }
-
 
 function closeForm() {
   formModal.classList.remove("show");
@@ -33,3 +31,18 @@ function closeForm() {
     formModal.style.display = "none";
   }, 100);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const errorDiv = document.getElementById("errorDiv");
+  const closeError = document.getElementById("closeError");
+
+  if (errorDiv) {
+    setTimeout(() => {
+      errorDiv.style.display = "none";
+    }, 10000);
+
+    closeError.addEventListener("click", () => {
+      errorDiv.style.display = "none";
+    });
+  }
+});

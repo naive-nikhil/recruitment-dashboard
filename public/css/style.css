@@ -34,7 +34,7 @@ header {
 .header-nav-options {
   padding: 0.5rem 1.5rem;
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .header-nav-options p {
@@ -297,4 +297,36 @@ header {
   .row {
     flex-direction: column;
   }
+}
+
+.not-found {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.not-found h1 {
+  font-size: 8rem;
+}
+
+.not-found h4 {
+  font-size: 1.4rem;
+}
+
+.messages {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 1rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0.35rem;
+  border: 1px solid #6c757d;
+  gap: 1rem;
 }
