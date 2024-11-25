@@ -1,0 +1,60 @@
+<%-layout("./index.ejs")%>
+
+  <template id="signUpForm">
+    <form method="post" action="/signup">
+      <h2>Create a new user</h2>
+
+      <div class="row full-width">
+        <label for="email">Email
+          <span class="required">*</span></label>
+        <input type="email" name="email" required="required">
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="username">Username
+            <span class="required">*</span></label>
+          <input type="text" name="username" required="required">
+        </div>
+
+        <div>
+          <label for="password">Password
+            <span class="required">*</span></label>
+          <input type="password" name="password" required="required">
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </template>
+
+  <template id="loginForm">
+    <form method="post" action="/login">
+      <h2>Login</h2>
+
+      <div class="row">
+        <div>
+          <label for="username">Username
+            <span class="required">*</span></label>
+          <input type="text" name="username" required="required">
+        </div>
+
+        <div>
+          <label for="password">Password
+            <span class="required">*</span></label>
+          <input type="password" name="password" required="required">
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+      <p>
+        <i>For new user and reset password contact admin</i>
+      </p>
+    </form>
+  </template>
+  <div id="formModal" class="modal">
+    <div class="modal-content"></div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      openForm(`<%=formType%>`);
+    })
+  </script>

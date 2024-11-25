@@ -15,10 +15,6 @@ function openForm(templateId) {
 
   formModal.style.display = "flex";
 
-  setTimeout(() => {
-    formModal.classList.add("show");
-  }, 10);
-
   const dynamicCloseButton = formContent.querySelector("#closeFormButton");
   if (dynamicCloseButton) {
     dynamicCloseButton.addEventListener("click", closeForm);
@@ -26,23 +22,15 @@ function openForm(templateId) {
 }
 
 function closeForm() {
-  formModal.classList.remove("show");
-  setTimeout(() => {
-    formModal.style.display = "none";
-  }, 100);
+  formModal.style.display = "none";
 }
 
+// Wait for the DOM to load
 document.addEventListener("DOMContentLoaded", () => {
-  const errorDiv = document.getElementById("errorDiv");
-  const closeError = document.getElementById("closeError");
-
-  if (errorDiv) {
+  const flash = document.getElementById("flash");
+  if (flash) {
     setTimeout(() => {
-      errorDiv.style.display = "none";
+      flash.remove();
     }, 10000);
-
-    closeError.addEventListener("click", () => {
-      errorDiv.style.display = "none";
-    });
   }
 });
