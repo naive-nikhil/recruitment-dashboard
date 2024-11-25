@@ -41,7 +41,9 @@
                     -
                     <span class="highlight"><%= job.positions %></span>
                   </td>
-                  <td><%= job.budget.toLocaleString('en-IN') %></td>
+                  <td><%= job.budget.toLocaleString('en-IN') %>
+                    (<%= (job.budget * 12 / 100000).toFixed(2) %>
+                    LPA)</td>
                   <td><%= job.submittedOn.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></td>
                   <td>
                     <span class="highlight"><%= job.profiles.length %></span>
