@@ -19,7 +19,7 @@
           <th>Role</th>
           <th>Experience Required</th>
           <th>Location - Positions</th>
-          <th>Budget</th>
+          <th>Salary Per Month</th>
           <th>Submitted On</th>
           <th>Profiles</th>
           <th>Actions</th>
@@ -41,7 +41,7 @@
                     -
                     <span class="highlight"><%= job.positions %></span>
                   </td>
-                  <td><%= job.budget %></td>
+                  <td><%= job.budget.toLocaleString('en-IN') %></td>
                   <td><%= job.submittedOn.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></td>
                   <td>
                     <span class="highlight"><%= job.profiles.length %></span>
@@ -257,7 +257,7 @@
           <div>
             <label for="job[positions]">Positions
               <span class="required">*</span></label>
-            <input type="number" name="job[positions]" required="required">
+            <input type="text" name="job[positions]" required="required">
           </div>
           <div>
             <label for="job[budget]">Budget
