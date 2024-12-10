@@ -2,18 +2,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 * {
   margin: 0;
   border: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Hubot Sans", sans-serif;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
   /* outline: 1px solid #000; */
 }
 
 ::-webkit-scrollbar {
+  width: 10px;
   display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6c757d;
+  border-radius: 5px;
+  border: 2px solid #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 body {
@@ -61,19 +79,27 @@ header {
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 0.5rem;
-  max-height: 100vh;
+  max-height: 90vh;
   overflow: hidden;
+  display: flex;
 }
 
-.container {
+.section-one,
+.section-two {
   width: 100%;
   padding: 1rem;
+}
+
+.section-one {
+  max-width: 320px;
 }
 
 .container-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -83,6 +109,11 @@ header {
 
 .container-header__info h3 {
   font-weight: 600;
+  font-size: 1.4rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .container-header__info p {
@@ -92,9 +123,9 @@ header {
 }
 
 .container-header__search {
-  width: 400px;
   display: flex;
   align-items: center;
+  width: 100%;
   gap: 0.5rem;
 }
 
@@ -157,7 +188,7 @@ header {
 
 .info-table td,
 .info-table th {
-  padding: 0.5rem 1rem;
+  padding: 2rem 1rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -177,6 +208,7 @@ header {
 
 .modal-content {
   background: #fff;
+
   padding: 20px;
   border-radius: 8px;
   width: 90%;
@@ -293,6 +325,7 @@ header {
 
   .content-area {
     max-height: 85vh;
+    flex-direction: column;
   }
 
   .container-header__search {
@@ -340,4 +373,10 @@ header {
   padding: 0.35rem;
   border: 1px solid #6c757d;
   gap: 1rem;
+}
+
+.fa-ellipsis-vertical {
+  font-size: 1rem !important;
+  padding: 0.25rem;
+  z-index: 998;
 }

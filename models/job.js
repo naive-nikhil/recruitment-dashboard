@@ -1,5 +1,7 @@
 // Required Imports
 const mongoose = require("mongoose");
+const Company = require("./company");
+const { required } = require("joi");
 const Schema = mongoose.Schema;
 
 // Requisition Schema
@@ -11,6 +13,7 @@ const jobSchema = new Schema({
   budget: { type: Number, required: true },
   submittedOn: { type: Date, default: Date.now },
   jobDescription: { type: String, required: true },
+  companyId: { type: mongoose.Schema.ObjectId, ref: "Company", required: true },
   profiles: [{ type: mongoose.Schema.ObjectId, ref: "Candidate", default: {} }],
 });
 

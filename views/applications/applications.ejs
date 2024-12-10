@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/css/applications.css">
+<div class="container-header">
+  <div class="container-header__info">
+    <h3>Applications Submitted For
+      <%=jobRole%>
+      [<%=candidates.length%>]
+      <i class="fa-solid fa-xmark" id="closeFormButton"></i>
+    </h3>
+  </div>
+  <div class="container-header__search">
+    <i class="fa-solid fa-plus" onclick="addApplicationForm('<%=companyId%>', '<%=jobId%>')"></i>
+    <i class="fa-solid fa-arrows-rotate"></i>
+    <input type="text" placeholder="Find">
+  </div>
+</div>
+
+<div class="data-list">
+  <% if (candidates.length === 0) { %>
+    <div class="no-data">
+      No data available.
+    </div>
+  <% } else { %>
+    <% for (let candidate of candidates) { %>
+      <div class="application" data-company-id="<%=candidate._id%>">
+        <div class="application-content">
+          <div class="content-profile">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="content-user-details">
+            <h1><%=candidate.firstName%>
+              <%=candidate.lastName%></h1>
+            <div class="content-details">
+              <h3>
+                <i class="fa-solid fa-indian-rupee-sign"></i><%=candidate.currentSalary%>
+                Per Month |</h3>
+              <h3>
+                <i class="fa-solid fa-school"></i>Below 10th |</h3>
+              <h3>
+                <i class="fa-solid fa-language"></i>Hindi, English |</h3>
+              <h3>
+                <i class="fa-solid fa-location-dot"></i><%=candidate.currentLocation%>
+                |</h3>
+              <h3>
+                <i class="fa-solid fa-user-tie"></i>Experience -
+                <%=candidate.totalExperience%>
+                Yrs |</h3>
+            </div>
+
+            <h3>Applied By - Deepanshu On
+              <%= candidate.submittedOn.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></h3>
+          </div>
+        </div>
+        <div class="application-options">
+          <div class="menu-container">
+            <i class="fa-solid fa-ellipsis-vertical job-option" data-id="<%=candidate._id%>"></i>
+            <div class="menu" id="<%=candidate._id%>">
+              <h4 class="menu-item">Edit</h4>
+              <h4 class="menu-item">Delete</h4>
+            </div>
+          </div>
+          <div class="contact">
+            <button class="view-applications-btn">
+              <%=candidate.phone%>
+              <span>
+                <i class="fa-solid fa-phone"></i>
+              </span>
+            </button>
+            <a href="<%=candidate.resume.fileUrl%>" target="_blank">
+              <button class="view-applications-btn">
+                View Resume
+                <span>
+                  <i class="fa-solid fa-file"></i>
+                </span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  <% } %>
+</div>

@@ -1,0 +1,114 @@
+.applications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.application {
+  position: relative;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border-bottom: 2px solid #6c757d;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.application-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.content-profile i {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1.75rem;
+  font-size: 1.25rem;
+  color: #6c757d;
+  border-radius: 50px;
+}
+
+.application h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.application h3 {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.content-details {
+  margin-top: 0.125rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.content-details h3 {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.application-options {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: space-between;
+  padding: 0.25rem;
+  gap: 1rem;
+}
+
+.menu-container {
+  gap: 0.5rem;
+}
+
+.application-options .contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.application-options i {
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.application-options button {
+  cursor: pointer;
+  padding-left: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-wrap: nowrap;
+}
+
+.application-options button span {
+  padding: 0.25rem 0.5rem;
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.application-options button span i {
+  color: #fff;
+}
+
+.no-data {
+  width: 100%;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border-bottom: 2px solid #6c757d;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+}
