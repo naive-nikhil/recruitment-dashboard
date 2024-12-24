@@ -1,43 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/companies.css" />
+    <link rel="stylesheet" href="/css/jobs.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
   </head>
 
   <body>
-    <header>
-      <div class="header-company-info">
-        <h1>2020 TECHNOLOGIES</h1>
-        <%if(currUser){%>
-          <h2>User -
-            <%=currUser.username%></h2>
-          <h3 onclick="window.location.href='/logout'">Logout</h3>
-        <%}%>
-      </div>
-      <%if(currUser){%>
-        <div class="header-nav-options">
-          <p onclick="window.location.href='/jobs'">JOBS</p>
-          <p onclick="window.location.href='/applications'">APPLICATIONS</p>
-          <%if(currUser.username === "admin"){%>
-            <p onclick="window.location.href='/signup'">SIGNUP</p>
-          <%}%>
-
-        </div>
-      <%}%>
-    </header>
-
+    <%-include("./header.ejs")%>
     <div class="content-area">
-      <%-body%>
-      </div>
-      <div class="flash" id="flash">
-        <h4><%=success%></h4>
-      </div>
-      <script src="/js/script.js"></script>
-    </body>
-
-  </html>
+      <div class="section-one"></div>
+      <div class="section-two"></div>
+    </div>
+    <div class="flash" id="flash">
+      <h4><%=success%></h4>
+    </div>
+    <div id="formModal" class="modal">
+      <div class="modal-content"></div>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

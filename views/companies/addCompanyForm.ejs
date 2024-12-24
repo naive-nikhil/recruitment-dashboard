@@ -1,0 +1,39 @@
+<form method="post" action="/companies">
+  <h2>Add new company<i class="fa-solid fa-xmark" id="closeFormButton"></i>
+  </h2>
+
+  <div class="row full-width">
+    <label for="company[companyName]">Company Name
+      <span class="required">*</span></label>
+    <input type="text" name="company[companyName]" required="required">
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="company[industry]">Industry
+        <span class="required">*</span></label>
+      <input type="text" name="company[industry]" required="required">
+    </div>
+
+    <div>
+      <label for="company[contactPersonName]">Contact Person Name
+        <span class="required">*</span></label>
+      <input type="text" name="company[contactPersonName]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="company[contactPersonPhone]">Contact Person Phone
+        <span class="required">*</span></label>
+      <input type="number" name="company[contactPersonPhone]" required="required">
+    </div>
+    <div>
+      <label for="company[contactPersonEmail]">Contact Person Email
+        <span class="required">*</span></label>
+      <input type="email" name="company[contactPersonEmail]" required="required">
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

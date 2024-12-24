@@ -1,0 +1,153 @@
+<form method="post" action="/companies/<%=companyId%>/jobs/<%=jobId%>/applications" enctype="multipart/form-data">
+  <h2><%=role%>
+    <i class="fa-solid fa-xmark" id="closeFormButton"></i>
+  </h2>
+  <h4><%=experienceRequired%>
+    Yrs |
+    <%=location%></h4>
+
+  <div class="row full-width">
+    <label for="candidate[resume]">Attach CV
+      <span class="required">
+        *</span>
+      (doc/docx/pdf/rtf only)</label>
+    <input type="file" name="candidate[resume]" accept=".pdf,.doc,.docx,.rtf">
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[firstName]">First Name
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[firstName]" required="required">
+    </div>
+
+    <div>
+      <label for="candidate[lastName]">Last Name
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[lastName]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[email]">Email
+        <span class="required">*</span></label>
+      <input type="email" name="candidate[email]" required="required">
+    </div>
+    <div>
+      <label for="candidate[gender]">Gender
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[gender]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[phone]">Phone Number
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[phone]" required="required">
+    </div>
+    <div>
+      <label for="candidate[currentLocation]">Current Location
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[currentLocation]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[preferredLocation]">Preferred Location
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[preferredLocation]" required="required">
+    </div>
+    <div>
+      <label for="candidate[dob]">Date of Birth (18Yrs Min)
+        <span class="required">*</span></label>
+      <input type="date" name="candidate[dob]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[aadhaarNumber]">Aadhaar Number
+        <span class="required">*</span></label>
+      <input type="number" name="candidate[aadhaarNumber]" required="required">
+    </div>
+    <div>
+      <label for="candidate[panNumber]">PAN Number
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[panNumber]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[totalExperience]">Total Experience (yrs)
+        <span class="required">*</span></label>
+      <input type="number" name="candidate[totalExperience]" required="required">
+    </div>
+    <div>
+      <label for="candidate[relevantExperience]">Relevant Experience (yrs)
+        <span class="required">*</span></label>
+      <input type="number" name="candidate[relevantExperience]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[currentCompany]">Current Company
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[currentCompany]" required="required">
+    </div>
+    <div>
+      <label for="candidate[noticePeriod]">Notice Period (days)
+        <span class="required">*</span></label>
+      <input type="number" name="candidate[noticePeriod]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[leavingReason]">Reason for Leaving
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[leavingReason]" required="required">
+    </div>
+    <div>
+      <label for="candidate[noticePeriodComments]">Notice Period Comments
+        <span class="required">*</span></label>
+      <input type="text" name="candidate[noticePeriodComments]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="candidate[currentSalary]">Current Salary
+        <span class="required">*</span></label>
+      <input type="number" name="candidate[currentSalary]" required="required">
+    </div>
+    <div>
+      <label for="candidate[expectedSalary]">Expected Salary
+        <span class="required">*</span></label>
+      <input type="number" name="candidate[expectedSalary]" required="required">
+    </div>
+  </div>
+
+  <div class="row full-width">
+    <label for="candidate[salaryStructure]">Salary Structure Details
+      <span class="required">*</span></label>
+    <input type="text" name="candidate[salaryStructure]" required="required">
+  </div>
+
+  <div class="consent">
+    <h5>Consent</h5>
+    <p>
+      <i>We process this data for recruitment purposes (e.g. screening, evaluations, employment letter generations, background verifications) only.<br>We also store this data in our applicant tracking system and are fully compliant with the local laws.<br>If you have any questions or concerns, please do not hesitate to contact the recruiter or our reception.</i>
+    </p>
+    <div class="agree">
+      <input type="checkbox" name="agree">
+      <label for="agree">I agree</label>
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

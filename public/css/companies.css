@@ -1,0 +1,40 @@
+.data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.25rem;
+  overflow: auto;
+  max-height: 80vh;
+}
+
+.company {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border-bottom: 2px solid #6c757d;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.company h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.company h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.company h3 {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.125rem;
+}

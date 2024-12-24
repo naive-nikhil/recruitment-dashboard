@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Inter Tight", sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.vertical-nav {
+  border-right: 1px solid #dadada;
+}
+
+.vertical-nav .company-logo {
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  padding: 0 0.7rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid #dadada;
+}
+
+.fa-school {
+  padding: 0.8rem;
+  color: #fff;
+  background-color: #0057ff;
+  font-size: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.vertical-nav h1 {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.main-content header {
+  height: 7vh;
+  border-bottom: 1px solid #dadada;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.main-content header .header-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  border: 0.15rem solid #dadada;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 30vw;
+}
+
+.fa-chevron-left,
+.fa-bell {
+  padding: 0.5rem;
+  border: 0.15rem solid #dadada;
+  border-radius: 0.5rem;
+}
+
+.header-search-bar input {
+  width: 100%;
+  outline: none;
+}
+
+.main-content header .header-options {
+  display: flex;
+}

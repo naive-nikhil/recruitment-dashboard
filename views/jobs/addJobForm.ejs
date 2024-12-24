@@ -1,0 +1,45 @@
+<form method="post" action="/companies/<%=companyId%>/jobs">
+  <h2>Post New Job<i class="fa-solid fa-xmark" id="closeFormButton"></i>
+  </h2>
+
+  <div class="row full-width">
+    <label for="job[role]">Role
+      <span class="required">*</span></label>
+    <input type="text" name="job[role]" required="required">
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="job[experienceRequired]">Experience Required
+        <span class="required">*</span></label>
+      <input type="text" name="job[experienceRequired]" required="required">
+    </div>
+
+    <div>
+      <label for="job[location]">Location
+        <span class="required">*</span></label>
+      <input type="text" name="job[location]" required="required">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="job[positions]">Positions
+        <span class="required">*</span></label>
+      <input type="text" name="job[positions]" required="required">
+    </div>
+    <div>
+      <label for="job[budget]">Budget
+        <span class="required">*</span></label>
+      <input type="text" name="job[budget]" required="required">
+    </div>
+  </div>
+
+  <div class="row full-width">
+    <label for="job[jobDescription]">Job Description
+      <span class="required">*</span></label>
+    <textarea name="job[jobDescription]" required="required" rows="10"></textarea>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
