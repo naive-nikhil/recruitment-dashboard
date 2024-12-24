@@ -68,6 +68,7 @@ header {
   padding: 0.25rem;
   width: 30vw;
   background-color: #fff;
+  margin-right: 1.5rem;
 }
 
 .search-bar input {
