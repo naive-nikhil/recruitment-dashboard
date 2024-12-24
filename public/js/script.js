@@ -1,32 +1,6 @@
 const formModal = document.getElementById("formModal");
 const formContent = document.querySelector(".modal-content");
 
-// Hide all menus except the one clicked
-function hideMenus(excludeElement) {
-  const menus = document.querySelectorAll(".menu");
-  menus.forEach((menu) => {
-    if (!excludeElement.contains(menu)) {
-      menu.style.display = "none"; // Hide other menus
-    }
-  });
-}
-
-// Global functionality for menus
-function initializeMenuFunctionality(parent = document) {
-  parent.querySelectorAll(".job-option").forEach((menuIcon) => {
-    menuIcon.addEventListener("click", function (event) {
-      console.log(menuIcon);
-      event.stopImmediatePropagation();
-      const companyElement = this.closest(".data-list");
-      const menu = companyElement.querySelector(".menu");
-      if (menu) {
-        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-        hideMenus(companyElement); // Hide other menus
-      }
-    });
-  });
-}
-
 // Function to dynamically load jobs
 function loadJobs(companyId) {
   const sectionTwo = document.querySelector(".section-two");
@@ -37,7 +11,6 @@ function loadJobs(companyId) {
     })
     .then((html) => {
       sectionTwo.innerHTML = html;
-      initializeMenuFunctionality(sectionTwo); // Reinitialize menu functionality
       applicationsFunctionality(sectionTwo); // Reinitialize applications functionality
     })
     .catch((error) => console.error("Error fetching jobs:", error));
@@ -58,8 +31,6 @@ function loadCompanyJobs() {
       loadJobs(companyElement.dataset.companyId);
     }
   });
-
-  initializeMenuFunctionality(companiesList); // Initialize menu functionality for companies
 }
 
 // Functionality for applications
